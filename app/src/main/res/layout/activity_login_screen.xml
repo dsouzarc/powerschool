@@ -12,11 +12,34 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:text="Text"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"/>
-
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userName"
+                android:layout_marginBottom="24dp"
+                android:hint="Username"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/password"
+                android:layout_marginBottom="24dp"
+                android:hint="Password"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_marginBottom="24dp"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:id="@+id/submitButton"/>
+            <TextView
+                android:text="Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:id="@+id/textView"/>
+    </LinearLayout>
     </ScrollView>
 </RelativeLayout>
