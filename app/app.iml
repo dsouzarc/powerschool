@@ -62,6 +62,7 @@
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="htmlunit-2.9" level="project" />
+    <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
   </component>
 </module>
 

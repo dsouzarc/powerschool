@@ -35,7 +35,6 @@ public class LoginScreen extends Activity {
             @Override
             public void onClick(View v) {
                 new Login().execute();
-
             }
         });
     }
@@ -56,8 +55,6 @@ public class LoginScreen extends Activity {
                 password.setValueAttribute(passwordET.getText().toString());
 
                 final HtmlPage nextPage = submit.click();
-
-
                 return nextPage.asText();
             }
             catch (Exception e) {
