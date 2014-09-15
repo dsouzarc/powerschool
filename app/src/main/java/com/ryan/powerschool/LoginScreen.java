@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import android.widget.TextView;
 import android.os.AsyncTask;
 
@@ -28,6 +30,15 @@ public class LoginScreen extends Activity {
             final WebClient client = new WebClient();
             try {
                 final HtmlPage page = client.getPage("https://pschool.princetonk12.org/public/");
+
+                final HtmlForm theForm = page.getFormByName("LoginForm");
+
+                final HtmlTextInput username = theForm.getInputByName("fieldAccount");
+                final HtmlTextInput password = theForm.getInputByName("pw");
+
+                final HtmlSubmitInput submit = theForm.getInputByName("btn-enter");
+
+
                 return page.asText();
             }
             catch (Exception e) {
