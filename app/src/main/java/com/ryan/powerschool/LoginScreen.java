@@ -12,10 +12,26 @@ import android.os.AsyncTask;
 
 public class LoginScreen extends Activity {
 
+    private TextView theView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
+
+        theView = (TextView) findViewById(com.ryan.powerschool.R.id.textView);
+    }
+
+    private class Login extends AsyncTask<Void, Void, String> { 
+        @Override
+        public String doInBackground(Void... params) {
+            try {
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return e.toString();
+            }
+        }
     }
 
 
