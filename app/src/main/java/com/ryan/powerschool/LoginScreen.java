@@ -6,15 +6,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
+import android.widget.Button;
+import android.widget.EditText;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import android.widget.TextView;
 import android.os.AsyncTask;
+import android.view.View;
 
 public class LoginScreen extends Activity {
 
     private TextView theView;
+    private Button submitButton;
+    private EditText usernameET, passwordET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +27,17 @@ public class LoginScreen extends Activity {
         setContentView(R.layout.activity_login_screen);
 
         theView = (TextView) findViewById(com.ryan.powerschool.R.id.textView);
+        submitButton = (Button) findViewById(com.ryan.powerschool.R.id.submitButton);
+        usernameET = (EditText) findViewById(com.ryan.powerschool.R.id.userName);
+        passwordET = (EditText) findViewById(com.ryan.powerschool.R.id.password);
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Login().execute();
+
+            }
+        });
     }
 
     private class Login extends AsyncTask<Void, Void, String> {
@@ -30,16 +46,19 @@ public class LoginScreen extends Activity {
             final WebClient client = new WebClient();
             try {
                 final HtmlPage page = client.getPage("https://pschool.princetonk12.org/public/");
-
                 final HtmlForm theForm = page.getFormByName("LoginForm");
 
                 final HtmlTextInput username = theForm.getInputByName("fieldAccount");
                 final HtmlTextInput password = theForm.getInputByName("pw");
-
                 final HtmlSubmitInput submit = theForm.getInputByName("btn-enter");
 
+                username.setValueAttribute(usernameET.getText().toString());
+                password.setValueAttribute(passwordET.getText().toString());
 
-                return page.asText();
+                final HtmlPage nextPage = submit.click();
+
+
+                return nextPage.asText();
             }
             catch (Exception e) {
                 e.printStackTrace();
