@@ -13,12 +13,15 @@ import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
 import android.widget.TextView;
 import android.os.AsyncTask;
+import android.content.SharedPreferences;
 import android.view.View;
 
 public class LoginScreen extends Activity {
 
     private TextView theView;
     private Button submitButton;
+    private SharedPreferences thePreferences;
+    private SharedPreferences.Editor theEditor;
     private EditText usernameET, passwordET;
 
     @Override
@@ -26,10 +29,16 @@ public class LoginScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
 
+        thePreferences = getApplicationContext().getSharedPreferences("com.ryan.powerschool", 1);
+        theEditor = thePreferences.edit();
+
         theView = (TextView) findViewById(com.ryan.powerschool.R.id.textView);
         submitButton = (Button) findViewById(com.ryan.powerschool.R.id.submitButton);
         usernameET = (EditText) findViewById(com.ryan.powerschool.R.id.userName);
         passwordET = (EditText) findViewById(com.ryan.powerschool.R.id.password);
+
+        usernameET.setText(getField("username"));
+        passwordET.setText(getField("password"));
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +60,14 @@ public class LoginScreen extends Activity {
                 final HtmlTextInput password = theForm.getInputByName("pw");
                 final HtmlSubmitInput submit = theForm.getInputByName("btn-enter");
 
-                username.setValueAttribute(usernameET.getText().toString());
-                password.setValueAttribute(passwordET.getText().toString());
+                final String name = usernameET.getText().toString();
+                final String pass = passwordET.getText().toString();
+
+                setField("username", name);
+                setField("password", pass);
+
+                username.setValueAttribute(name);
+                password.setValueAttribute(pass);
 
                 final HtmlPage nextPage = submit.click();
                 return nextPage.asText();
@@ -66,6 +81,16 @@ public class LoginScreen extends Activity {
         public void onPostExecute(final String param) {
             theView.setText(param);
         }
+    }
+
+    private String getField(final String name) {
+        return thePreferences.getString(name, "");
+    }
+
+    private void setField(final String name, final String value) {
+        theEditor.putString(name, value);
+        theEditor.apply();
+        theEditor.commit();
     }
 
 
