@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import android.widget.TextView;
+import android.os.AsyncTask;
 
 public class LoginScreen extends Activity {
 
