@@ -22,15 +22,22 @@ public class LoginScreen extends Activity {
         theView = (TextView) findViewById(com.ryan.powerschool.R.id.textView);
     }
 
-    private class Login extends AsyncTask<Void, Void, String> { 
+    private class Login extends AsyncTask<Void, Void, String> {
         @Override
         public String doInBackground(Void... params) {
+            final WebClient client = new WebClient();
             try {
+                final HtmlPage page = client.getPage("https://pschool.princetonk12.org/public/");
+                return page.asText();
             }
             catch (Exception e) {
                 e.printStackTrace();
                 return e.toString();
             }
+        }
+        @Override
+        public void onPostExecute(final String param) {
+            theView.setText(param);
         }
     }
 
