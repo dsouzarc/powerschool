@@ -51,6 +51,12 @@ public class LoginScreen extends Activity {
     private class Login extends AsyncTask<Void, Void, String> {
         @Override
         public String doInBackground(Void... params) {
+            final String name = usernameET.getText().toString();
+            final String pass = passwordET.getText().toString();
+
+            setField("username", name);
+            setField("password", pass);
+
             final WebClient client = new WebClient();
             try {
                 final HtmlPage page = client.getPage("https://pschool.princetonk12.org/public/");
@@ -59,12 +65,6 @@ public class LoginScreen extends Activity {
                 final HtmlTextInput username = theForm.getInputByName("fieldAccount");
                 final HtmlTextInput password = theForm.getInputByName("pw");
                 final HtmlSubmitInput submit = theForm.getInputByName("btn-enter");
-
-                final String name = usernameET.getText().toString();
-                final String pass = passwordET.getText().toString();
-
-                setField("username", name);
-                setField("password", pass);
 
                 username.setValueAttribute(name);
                 password.setValueAttribute(pass);
