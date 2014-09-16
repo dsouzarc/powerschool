@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="htmlunit-2.15">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/htmlunit-2.15.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

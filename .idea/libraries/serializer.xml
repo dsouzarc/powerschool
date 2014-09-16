@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="commons-lang-2.6">
+  <library name="serializer">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/commons-lang-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/libs/serializer.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
