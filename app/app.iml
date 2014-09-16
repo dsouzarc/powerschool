@@ -92,7 +92,6 @@
     <orderEntry type="library" exported="" name="commons-lang3-3.3.2" level="project" />
     <orderEntry type="library" exported="" name="nekohtml-1.9.21" level="project" />
     <orderEntry type="library" exported="" name="httpmime-4.3.3" level="project" />
-    <orderEntry type="library" exported="" name="httpcore-4.3.2" level="project" />
     <orderEntry type="library" exported="" name="httpclient-4.3.3" level="project" />
     <orderEntry type="library" exported="" name="commons-codec-1.9" level="project" />
     <orderEntry type="library" exported="" name="htmlunit-2.15" level="project" />
